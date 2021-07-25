@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #000;
+}
+
+header {
+    background-color: #5061DE;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    color: #000;
+}
+
+header > nav > ul {
+    display: flex;
+}
+
+header > figure > img {
+    width: 120px;
+    height: 60px;
+}
+
+header > nav > ul > li {
+    margin: 15px;
+    cursor: pointer;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+header > nav > ul > li > img, header > nav > ul > li > a > img  {
+    width: 30px;
+    height: 30px;
+}
+
+main {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+main > form > input {
+    padding: 15px;
+    font-size: 16pt;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 2px 2px 4px #707070;
+    transition: 0.25s;
+}
+
+main > form > button {
+    padding: 15px;
+    border-radius: 10px;
+    border:none;
+    background-color: #5061DE;
+    color: #fff;
+    margin: 10px;
+    cursor: pointer;
+}
+
+main > form > input:focus {
+    border: solid 1px #5061DE;
+    transition: 0.25s;
+    box-shadow: none;
+}
+
+.warning {
+    margin-top: 30px;
+    border: 1px solid #D48A3D;
+    background-color: #EBD85199;
+    color: #D48A3D;
+    font-size: 12pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    font-weight: bold;
+    border-radius: 30px;
+    display: none;
+}
+
+.success {
+    margin-top: 30px;
+    border: 1px solid #1DE022;
+    background-color: #AFE0AA;
+    color: #1DE022;
+    font-size: 12pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    font-weight: bold;
+    border-radius: 30px;
+    display: none;
+}

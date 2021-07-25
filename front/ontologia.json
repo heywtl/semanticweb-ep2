@@ -1,0 +1,32 @@
+{ 
+  "head": {
+    "vars": [ "name" , "activityname" ]
+  } ,
+  "results": {
+    "bindings": [
+      { 
+        "name": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "GG" } ,
+        "activityname": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Games" }
+      } ,
+      { 
+        "name": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Bimbo" } ,
+        "activityname": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Barber" }
+      } ,
+      { 
+        "name": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Nexus" } ,
+        "activityname": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Games" }
+      } ,
+      { 
+        "name": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Silver Lux" } ,
+        "activityname": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Stationary" }
+      } ,
+      { 
+        "name": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Ágape" } ,
+        "activityname": { "type": "literal" , "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal" , "value": "Bookstore" }
+      }
+    ]
+  },
+  "usuario": {
+    "id": "lincobrabo"
+  }
+}
