@@ -1,0 +1,374 @@
+@prefix : <http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix smd: <http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory> .
+
+<http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory> rdf:type owl:Ontology ;
+                                                                            owl:imports <http://xmlns.com/foaf/0.1/> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#max
+smd:max rdf:type owl:AnnotationProperty ;
+        rdfs:subPropertyOf rdfs:label .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#min
+smd:min rdf:type owl:AnnotationProperty ;
+        rdfs:subPropertyOf rdfs:label .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#hasActivity
+smd:hasActivity rdf:type owl:ObjectProperty ;
+                owl:inverseOf smd:isThemeOf .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#hosts
+smd:hosts rdf:type owl:ObjectProperty ;
+          owl:inverseOf smd:isLocatedOn .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#isExactly
+smd:isExactly rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#isLocatedOn
+smd:isLocatedOn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#isSoldAt
+smd:isSoldAt rdf:type owl:ObjectProperty ;
+             owl:inverseOf smd:sells .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#isThemeOf
+smd:isThemeOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#madeBy
+smd:madeBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#ofProd
+smd:ofProd rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#sells
+smd:sells rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#hasCode
+smd:hasCode rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#hasPhoneNumber
+smd:hasPhoneNumber rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#hasProdName
+smd:hasProdName rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#hasQuantity
+smd:hasQuantity rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#price
+smd:price rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#wasDiscounted
+smd:wasDiscounted rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#Activity
+smd:Activity rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty smd:isThemeOf ;
+                               owl:someValuesFrom smd:Store
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://xmlns.com/foaf/0.1/name> ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#Customer
+smd:Customer rdf:type owl:Class ;
+             owl:equivalentClass <http://www.w3.org/2000/10/swap/pim/contact#Person> ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty smd:isExactly ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass <http://www.w3.org/2000/10/swap/pim/contact#Person>
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty smd:hasPhoneNumber ;
+                               owl:someValuesFrom xsd:int
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://xmlns.com/foaf/0.1/accountName> ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://xmlns.com/foaf/0.1/name> ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#Mall
+smd:Mall rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty smd:hosts ;
+                           owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                           owl:onClass smd:Store
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty <http://xmlns.com/foaf/0.1/name> ;
+                           owl:cardinality "1"^^xsd:nonNegativeInteger
+                         ] ;
+         rdfs:comment "A place that hosts Stores" ;
+         rdfs:label "name" .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#Product
+smd:Product rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty smd:isSoldAt ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass smd:Store
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty smd:hasCode ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:int
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty smd:hasQuantity ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:int
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty smd:price ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:double
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <http://xmlns.com/foaf/0.1/name> ;
+                              owl:cardinality "1"^^xsd:nonNegativeInteger
+                            ] ;
+            rdfs:label "name" .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#Purchase
+smd:Purchase rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty smd:madeBy ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass smd:Customer
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty smd:ofProd ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass smd:Product
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty smd:hasQuantity ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:int
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty smd:price ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:double
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty smd:wasDiscounted ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:boolean
+                             ] ;
+             rdfs:isDefinedBy smd:Client ,
+                              smd:Product .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#Store
+smd:Store rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty smd:sells ;
+                            owl:someValuesFrom smd:Product
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty smd:hasActivity ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass smd:Activity
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty smd:isLocatedOn ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass smd:Mall
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty <http://xmlns.com/foaf/0.1/name> ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                          ] .
+
+
+###  http://www.w3.org/2000/10/swap/pim/contact#Person
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#agape
+smd:agape rdf:type owl:NamedIndividual ,
+                   smd:Store ;
+          smd:hasActivity smd:bookstore ;
+          smd:isLocatedOn smd:eastplaza ;
+          <http://xmlns.com/foaf/0.1/name> "Ágape"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#arthur
+smd:arthur rdf:type owl:NamedIndividual ,
+                    smd:Customer ;
+           <http://xmlns.com/foaf/0.1/accountName> "art"^^rdfs:Literal ;
+           <http://xmlns.com/foaf/0.1/name> "Arthur"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#barber
+smd:barber rdf:type owl:NamedIndividual ,
+                    smd:Activity ;
+           <http://xmlns.com/foaf/0.1/name> "Barber"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#bimbo
+smd:bimbo rdf:type owl:NamedIndividual ,
+                   smd:Store ;
+          smd:hasActivity smd:barber ;
+          smd:isLocatedOn smd:eastplaza ;
+          <http://xmlns.com/foaf/0.1/name> "Bimbo"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#bookstore
+smd:bookstore rdf:type owl:NamedIndividual ,
+                       smd:Activity ;
+              <http://xmlns.com/foaf/0.1/name> "Bookstore"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#eastplaza
+smd:eastplaza rdf:type owl:NamedIndividual ,
+                       smd:Mall ;
+              <http://xmlns.com/foaf/0.1/name> "East Plaza Shopping"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#games
+smd:games rdf:type owl:NamedIndividual ,
+                   smd:Activity ;
+          <http://xmlns.com/foaf/0.1/name> "Games"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#gg
+smd:gg rdf:type owl:NamedIndividual ,
+                smd:Store ;
+       smd:hasActivity smd:games ;
+       smd:isLocatedOn smd:eastplaza ;
+       <http://xmlns.com/foaf/0.1/name> "GG"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#gustavo
+smd:gustavo rdf:type owl:NamedIndividual ,
+                     smd:Customer ;
+            <http://xmlns.com/foaf/0.1/accountName> "guty"^^rdfs:Literal ;
+            <http://xmlns.com/foaf/0.1/name> "Gustavo"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#nexus
+smd:nexus rdf:type owl:NamedIndividual ,
+                   smd:Store ;
+          smd:hasActivity smd:games ;
+          smd:isLocatedOn smd:eastplaza ;
+          <http://xmlns.com/foaf/0.1/name> "Nexus"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#pencil
+smd:pencil rdf:type owl:NamedIndividual ,
+                    smd:Product ;
+           smd:isSoldAt smd:silverlux ;
+           smd:hasCode "1"^^xsd:int ;
+           smd:hasQuantity "50"^^xsd:int ;
+           smd:price "2.5"^^xsd:float ;
+           <http://xmlns.com/foaf/0.1/name> "Pencil"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#pokemon
+smd:pokemon rdf:type owl:NamedIndividual ,
+                     smd:Product ;
+            smd:isSoldAt smd:gg ;
+            smd:hasCode "2"^^xsd:int ;
+            smd:hasQuantity "5"^^xsd:int ;
+            smd:price "299.99"^^xsd:float ;
+            <http://xmlns.com/foaf/0.1/name> "Pokémon Sword"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#reddead
+smd:reddead rdf:type owl:NamedIndividual ,
+                     smd:Product ;
+            smd:isSoldAt smd:nexus ;
+            smd:hasCode "3"^^xsd:int ;
+            smd:hasQuantity "8"^^xsd:int ;
+            smd:price "309.99"^^xsd:float ;
+            <http://xmlns.com/foaf/0.1/name> "Red Dead Redemption 2"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#secret
+smd:secret rdf:type owl:NamedIndividual ,
+                    smd:Product ;
+           smd:isSoldAt smd:agape ;
+           smd:hasCode "4"^^xsd:int ;
+           smd:hasQuantity "2"^^xsd:int ;
+           smd:price "49.9"^^xsd:float ;
+           <http://xmlns.com/foaf/0.1/name> "The Secret"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#shampoo
+smd:shampoo rdf:type owl:NamedIndividual ,
+                     smd:Product ;
+            smd:isSoldAt smd:bimbo ;
+            smd:hasCode "5"^^xsd:int ;
+            smd:hasQuantity "15"^^xsd:int ;
+            smd:price "16.25"^^xsd:float ;
+            <http://xmlns.com/foaf/0.1/name> "Shampoo"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#silverlux
+smd:silverlux rdf:type owl:NamedIndividual ,
+                       smd:Store ;
+              smd:hasActivity smd:stationary ;
+              smd:isLocatedOn smd:eastplaza ;
+              <http://xmlns.com/foaf/0.1/name> "Silver Lux"^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/heywt/ontologies/2021/4/ShoppingMallDirectory#stationary
+smd:stationary rdf:type owl:NamedIndividual ,
+                        smd:Activity ;
+               <http://xmlns.com/foaf/0.1/name> "Stationary"^^rdfs:Literal .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
